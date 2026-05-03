@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1a1a2e;
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-sketch {
+  font-family: 'Caveat', cursive;
+}
+
+/* Subtle dot-grid background like Excalidraw */
+.canvas-bg {
+  background-color: #1a1a2e;
+  background-image: radial-gradient(circle, #2a3a5a 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Note card feel */
+.note-card {
+  background: #1e2d40;
+  border: 1px solid #2a3f5a;
+  border-radius: 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.note-card:hover {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.2), 0 4px 16px rgba(0,0,0,0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #2a3f5a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
