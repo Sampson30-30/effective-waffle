@@ -23,6 +23,12 @@ This app takes DRY (Don't Repeat Yourself) as a philosophical stance, not just a
 - **Database** — PostgreSQL
 - **Infrastructure** — Docker Compose
 
+## Screenshots
+
+![Dashboard](docs/screenshots/dashboard.png)
+![Calendar](docs/screenshots/calendar.png)
+![Tags](docs/screenshots/tags.png)
+
 ## Getting started
 
 1. Clone the repo
