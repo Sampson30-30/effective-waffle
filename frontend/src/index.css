@@ -37,3 +37,101 @@ body {
 ::-webkit-scrollbar-track { background: #1a1a2e; }
 ::-webkit-scrollbar-thumb { background: #2a3f5a; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
+
+/* Sticky note canvas */
+.sticky-canvas {
+  position: relative;
+  min-height: calc(100vh - 120px);
+  width: 100%;
+}
+
+.sticky-note {
+  position: absolute;
+  width: 220px;
+  min-height: 180px;
+  padding: 16px 16px 24px;
+  border-radius: 3px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,0,0,0.1);
+  transition: box-shadow 0.15s, transform 0.1s;
+  font-family: 'Caveat', cursive;
+}
+
+.sticky-note:active {
+  cursor: grabbing;
+}
+
+.sticky-note.dragging {
+  box-shadow: 8px 8px 24px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,0,0,0.15);
+  z-index: 1000 !important;
+  transform: rotate(1deg) scale(1.03) !important;
+}
+
+.sticky-note::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(225deg, rgba(0,0,0,0.15) 50%, transparent 50%);
+  border-radius: 0 0 3px 0;
+}
+
+.sticky-note .note-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: rgba(0,0,0,0.75);
+  word-break: break-word;
+}
+
+.sticky-note .note-body {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: rgba(0,0,0,0.6);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.sticky-note .note-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.sticky-note .note-tag {
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.12);
+  color: rgba(0,0,0,0.55);
+}
+
+.sticky-note .note-delete {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  opacity: 0;
+  font-size: 0.7rem;
+  color: rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: opacity 0.15s, color 0.15s;
+  background: none;
+  border: none;
+  padding: 2px 4px;
+}
+
+.sticky-note:hover .note-delete {
+  opacity: 1;
+}
+
+.sticky-note .note-delete:hover {
+  color: rgba(180,0,0,0.7);
+}

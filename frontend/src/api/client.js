@@ -63,6 +63,8 @@ export const api = {
   getTagsForInsight: (insightId) => request(`/insights/for-insight/${insightId}`),
   addTagToInsight: (data) => request('/insights/insight-tags', { method: 'POST', body: data }),
   removeTagFromInsight: (data) => request('/insights/insight-tags', { method: 'DELETE', body: data }),
+  linkInsights: (data) => request('/insights/links', { method: 'POST', body: data }),
+  unlinkInsights: (data) => request('/insights/links', { method: 'DELETE', body: data }),
 
   getStakeholderViews: (projectId) => request(`/stakeholder-views?project_id=${projectId}`),
   createStakeholderView: (data) => request('/stakeholder-views', { method: 'POST', body: data }),

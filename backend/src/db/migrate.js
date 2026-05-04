@@ -117,6 +117,16 @@ const schema = `
   ALTER TABLE calendar_events
     ALTER COLUMN start_time TYPE TIMESTAMP USING start_time AT TIME ZONE 'UTC',
     ALTER COLUMN end_time   TYPE TIMESTAMP USING end_time   AT TIME ZONE 'UTC';
+
+  CREATE TABLE IF NOT EXISTS insight_links (
+    id          SERIAL PRIMARY KEY,
+    from_id     INTEGER NOT NULL REFERENCES insights(id) ON DELETE CASCADE,
+    to_id       INTEGER NOT NULL REFERENCES insights(id) ON DELETE CASCADE,
+    created_at  TIMESTAMPTZ DEFAULT NOW(),
+    CONSTRAINT insight_links_no_self CHECK (from_id <> to_id)
+  );
+
+  CREATE UNIQUE INDEX IF NOT EXISTS insight_links_unique ON insight_links (from_id, to_id);
 `;
 
 async function migrate() {
